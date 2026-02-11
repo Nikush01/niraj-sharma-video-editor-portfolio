@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Niraj Kumar Sharma | Video Editor Portfolio</title>
-    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/G4M2R6v3/Startup-Grind-Profile-photo.jpg">
+    <!-- CHANGED: Use local favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -122,8 +123,6 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-
-        /* REMOVED PRELOADER CSS */
 
         /* Scroll Progress Bar */
         .progress-container {
@@ -2237,12 +2236,7 @@
             </div>
             
             <!-- Netlify Form - FIXED VERSION -->
-            <form class="contact-form lazy-load" id="contactForm" name="contact" method="POST" action="/" netlify netlify-honeypot="bot-field">
-                <input type="hidden" name="form-name" value="contact">
-                <p style="display: none;">
-                    <label>Don't fill this out if you're human: <input name="bot-field"></label>
-                </p>
-                
+            <form class="contact-form lazy-load" id="contactForm" name="contact" method="POST" data-netlify="true">
                 <div class="form-group lazy-load">
                     <label for="name">Name *</label>
                     <input type="text" id="name" name="name" class="form-control" placeholder="Your Name" required>
@@ -2297,7 +2291,6 @@
     <script>
         /*
          * Main interactive script for the portfolio (thumbnails, projects, lightboxes, accessibility helpers).
-         * Consider extracting to `script.js` when moving to production for caching and maintainability.
          */
         // Enhanced Custom Cursor
         const cursor = document.querySelector('.cursor');
@@ -3339,7 +3332,7 @@
                     // Actually submit the form (let Netlify handle it)
                     // Create a new FormData object and submit it
                     const formData = new FormData(contactForm);
-                    const formAction = contactForm.getAttribute('action');
+                    const formAction = contactForm.getAttribute('action') || '/';
                     
                     // Submit the form data (Netlify will process it)
                     fetch(formAction, {
